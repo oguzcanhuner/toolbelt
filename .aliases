@@ -1,0 +1,10 @@
+alias gaa="git add ."
+alias gl="git pull"
+alias gp="git push"
+alias gst="git status"
+alias gco="git checkout"
+
+alias cdd="cd ~/work/dalston-academy"
+alias cds="cd ~/work/stinkytrainers"
+
+alias gitlog="git log --oneline"

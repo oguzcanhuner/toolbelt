@@ -1,0 +1,34 @@
+[user]
+	name = Oguz Huner
+	email = oguzcanhuner@gmail.com
+[credential]
+	helper = osxkeychain
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[alias]
+  br = branch
+  df = diff
+  lg = log -p
+  st = status -sb
+  ci = commit
+  co = checkout
+[format]
+  # git log uses --pretty format by default, so this changes the default
+  # e.g. 4436819 [23 hours ago] (Gabe Berke-Williams) One line prompt
+  pretty = %C(yellow)%h%Creset %Cgreen[%cr]%Creset (%an) %s
