@@ -31,10 +31,15 @@ nmap <silent> <C-t> :CtrlP<CR>
 nmap <leader>t :CtrlP<CR>
 nore ; :
 nnoremap <leader><leader> <c-^> 
-nnoremap <esc> :noh<return><esc>
+nmap <Space> :noh<cr>
+nmap <leader>f :CtrlPClearCache<CR>
+
 
 "" easier navigation between split windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
+
+"" exclude directories from ctrl p
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/fixtures/*
 nnoremap <c-l> <c-w>l

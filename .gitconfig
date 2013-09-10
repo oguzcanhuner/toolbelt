@@ -28,7 +28,8 @@
   st = status -sb
   ci = commit
   co = checkout
+  l = "!. ~/.githelpers && pretty_git_log"
 [format]
   # git log uses --pretty format by default, so this changes the default
   # e.g. 4436819 [23 hours ago] (Gabe Berke-Williams) One line prompt
-  pretty = %C(yellow)%h%Creset %Cgreen[%cr]%Creset (%an) %s
+  pretty = %C(yellow)%h%Creset %Cgreen[%cr]%Creset (%C(bold blue)%an%Creset) %s

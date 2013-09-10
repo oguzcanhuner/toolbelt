@@ -8,3 +8,21 @@ alias cdd="cd ~/work/dalston-academy"
 alias cds="cd ~/work/stinkytrainers"
 
 alias gitlog="git log --oneline"
+
+alias gph="git push heroku master"
+
+alias be="bundle exec"
+alias ber="bundle exec rake"
+
+alias staging-console="heroku run rails c --app theamazings-staging"
+alias production-console="heroku run rails c --app theamazings"
+
+alias staging-logs="heroku logs --app theamazings-staging"
+alias production-logs="heroku logs --app theamazings"
+
+alias ctags="`brew --prefix`/bin/ctags"
+alias nethack="/usr/games/bin/nethack"
+alias ipaddress="ipconfig getifaddr en0"
+alias rspec-nojs="rspec -t ~js"
+
+alias migrate="rake db:migrate; rake db:test:prepare"

@@ -47,4 +47,4 @@ function prompt {
 }
 prompt
 export AUTOFEATURE=true
-cd work
+source ~/git-completion.bash
