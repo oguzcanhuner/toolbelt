@@ -1,4 +1,14 @@
-execute pathogen#infect()
+set rtp+=~/.vim/bundle/vundle/  
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'ervandew/supertab'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
+
 
 let mapleader = ","
 let g:mapleader = ","
@@ -43,3 +53,6 @@ nnoremap <c-h> <c-w>h
 "" exclude directories from ctrl p
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/fixtures/*
 nnoremap <c-l> <c-w>l
+
+
+

@@ -29,11 +29,13 @@ git_color() {
 }
 
 function prompt {
-  local BLUE="\[\033[0;33m\]"
+  local BLUE="\[\033[0;34m\]"
   local DARK_BLUE="\[\033[1;34m\]"
   local NO_COLOR="\[\033[0m\]"
   local GREEN="\[\033[0;32m\]"
   local BROWN="\[\033[1;31m\]"
+  local PURPLE="\[\033[0;35m\]"
+
   case $TERM in
     xterm*)
     TITLEBAR='\[\033]0;\u@\h:\w\007\]'
@@ -42,9 +44,16 @@ function prompt {
     TITLEBAR=""
     ;;
   esac
-  PS1="$BLUE\w$BROWN\$(git_branch)$BLUE-> $NO_COLOR"
+  PS1="$DARK_BLUE\w$PURPLE\$(git_branch)$DARK_BLUE-> $NO_COLOR"
   PS2='continue-> '
 }
 prompt
 export AUTOFEATURE=true
+
+
+# redis env variables for nitrous io
+export REDIS_CLOUD_HOST=pub-redis-14156.eu-west-1-1.2.ec2.garantiadata.com
+export REDIS_CLOUD_PORT=14156
+
 source ~/git-completion.bash
+source ~/.nvm/nvm.sh
