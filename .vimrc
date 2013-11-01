@@ -1,10 +1,25 @@
-execute pathogen#infect()
+set nocompatible
+syntax enable
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+Bundle 'mileszs/ack.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
+
 
 let mapleader = ","
 let g:mapleader = ","
 
-set nocompatible                " choose no compatibility with legacy vi
-syntax enable
+
 set encoding=utf-8
 set showcmd                     " display incomplete commands
 filetype plugin indent on       " load file type plugins + indentation
