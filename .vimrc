@@ -1,20 +1,23 @@
 set nocompatible
 syntax enable
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
-Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-dispatch'
 
+call vundle#end()
 
 let mapleader = ","
 let g:mapleader = ","
@@ -49,12 +52,20 @@ nnoremap <leader><leader> <c-^>
 nmap <Space> :noh<cr>
 nmap <leader>f :CtrlPClearCache<CR>
 
-
 "" easier navigation between split windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 
 "" exclude directories from ctrl p
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/fixtures/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/fixtures/*,*/node_modules/*
 nnoremap <c-l> <c-w>l
+
+"" Key mappings for vim-rspec
+map <Leader>. :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+let g:rspec_runner = "os_x_iterm"
+let g:rspec_command = "Dispatch bin/rspec {spec}"

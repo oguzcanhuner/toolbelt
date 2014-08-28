@@ -18,9 +18,10 @@
   old = red bold
   new = green bold
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+  added = green
+  changed = blue
+  untracked = magenta
+  deleted = red
 [alias]
   br = branch
   df = diff
