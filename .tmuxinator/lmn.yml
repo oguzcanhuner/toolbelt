@@ -1,0 +1,25 @@
+# ~/.tmuxinator/lmn.yml
+
+name: lmn
+root: ~/work/lostmyname/eagle
+
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+windows:
+  - server: rails s
+  - editor:
+      layout: b558,204x45,0,0[204x30,0,0,0,204x14,0,31,2]
+      panes:
+        - vim
+        - git status #start the day with a git status
