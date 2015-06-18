@@ -9,13 +9,15 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
-Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'mileszs/ack.vim'
+Plugin 'wikitopian/hardmode'
 Plugin 'tpope/vim-dispatch'
+Plugin 'mustache/vim-mustache-handlebars'
 
 call vundle#end()
 
@@ -51,6 +53,7 @@ nore ; :
 nnoremap <leader><leader> <c-^> 
 nmap <Space> :noh<cr>
 nmap <leader>f :CtrlPClearCache<CR>
+nnoremap <leader>d :Dispatch<space>
 
 "" easier navigation between split windows
 nnoremap <c-j> <c-w>j
@@ -68,4 +71,9 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = "Dispatch bin/rspec {spec}"
+let g:rspec_command = "Dispatch rspec {spec}"
+
+"" Turn on syntax highlighting for go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
