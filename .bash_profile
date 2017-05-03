@@ -1,6 +1,8 @@
 export TERM="xterm-256color"
 if [ -f ~/.aliases ]; then . ~/.aliases ; fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 function git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -28,6 +30,28 @@ git_color() {
  fi
 }
 
+# clearbit-specific prompt setup
+
+dev() {
+  eval "$(clearbit-env development)"
+  prompt
+}
+
+stag() {
+  eval "$(clearbit-env staging)"
+  prompt
+}
+
+prod() {
+  eval "$(clearbit-env prod)"
+  prompt
+}
+
+start_dynamo(){
+  cd ~/work/dynamo
+  eval java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
+}
+
 function prompt {
   local BLUE="\[\033[0;34m\]"
   local NO_COLOR="\[\033[0m\]"
@@ -41,10 +65,12 @@ function prompt {
     TITLEBAR=""
     ;;
   esac
-  PS1="$BLUE\w$PURPLE\$(git_branch)$BLUE-> $NO_COLOR"
+  PS1="$BLUE\w$PURPLE\$(git_branch) $GREEN${DEIS_PROFILE} $BLUE-> $NO_COLOR" 
   PS2='continue-> '
 }
 prompt
 export AUTOFEATURE=true
 export BUNDLER_EDITOR=vim
 #source ~/git-completion.bash
+export PATH="$HOME/.ndenv/bin:$PATH"
+eval "$(ndenv init -)"

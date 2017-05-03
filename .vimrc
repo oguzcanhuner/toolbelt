@@ -71,7 +71,7 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec {spec}"
 
 "" Turn on syntax highlighting for go
 let g:go_highlight_functions = 1
