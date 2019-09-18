@@ -8,16 +8,19 @@ call vundle#begin()
 " required! 
 Plugin 'gmarik/Vundle.vim'
 
-" My Bundles here:
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'mileszs/ack.vim'
-Plugin 'wikitopian/hardmode'
+Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-dispatch'
-Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'mxw/vim-jsx'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'isruslan/vim-es6'
+Plugin 'elzr/vim-json'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 
@@ -44,7 +47,7 @@ set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
 "" Colours
-color twilight256
+color jellybeans
 
 "" Mapping
 nmap <silent> <C-t> :CtrlP<CR>
@@ -61,13 +64,12 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 
 "" exclude directories from ctrl p
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/fixtures/*,*/node_modules/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/fixtures/*,*/node_modules/*,*/env/*
 nnoremap <c-l> <c-w>l
 
 "" Key mappings for vim-rspec
 map <Leader>. :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 let g:rspec_runner = "os_x_iterm"
@@ -77,3 +79,21 @@ let g:rspec_command = "Dispatch rspec {spec}"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+
+"" Linting
+nmap <silent> <leader>l :ALEFix<CR>
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '>>'
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+      \ 'javascript': ['prettier'],
+      \ 'jsx': ['prettier'],
+      \ 'ruby': ['rubocop']
+      \ }
+let g:ale_history_enabled = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:airline#extensions#ale#enabled = 1
+let g:ale_open_list = 1
+
+let g:jsx_ext_required = 0
