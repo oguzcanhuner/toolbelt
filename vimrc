@@ -5,7 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
@@ -20,7 +20,8 @@ Plugin 'mxw/vim-jsx'
 " Plugin 'jelera/vim-javascript-syntax'
 " Plugin 'isruslan/vim-es6'
 Plugin 'elzr/vim-json'
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
@@ -53,7 +54,7 @@ color jellybeans
 nmap <silent> <C-t> :CtrlP<CR>
 nmap <leader>t :CtrlP<CR>
 nore ; :
-nnoremap <leader><leader> <c-^> 
+nnoremap <leader><leader> <c-^>
 nmap <Space> :noh<cr>
 nmap <leader>f :CtrlPClearCache<CR>
 nnoremap <leader>d :Dispatch<space>
@@ -73,7 +74,7 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec {spec}"
 
 "" Turn on syntax highlighting for go
 let g:go_highlight_functions = 1
@@ -95,5 +96,7 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:airline#extensions#ale#enabled = 1
 let g:ale_open_list = 1
+"" let g:ale_linters_explicit = 1
+let g:ale_linters_ignore = ['brakeman']
 
 let g:jsx_ext_required = 0
