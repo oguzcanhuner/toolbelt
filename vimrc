@@ -8,12 +8,12 @@ call vundle#begin()
 " required!
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'mxw/vim-jsx'
 " Plugin 'pangloss/vim-javascript'
@@ -38,7 +38,7 @@ let g:Powerline_symbols = 'fancy' " make powerline look nicer
 "" Whitespace
 set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
-set expandtab                   " use spaces, not tabs (optional)
+set expandtab                   " uke spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
 "" Searching
@@ -51,8 +51,8 @@ set smartcase                   " ... unless they contain at least one capital l
 color jellybeans
 
 "" Mapping
-nmap <silent> <C-t> :CtrlP<CR>
-nmap <leader>t :CtrlP<CR>
+nmap <leader>t :Files<CR>
+nmap <leader>r :Ag<CR>
 nore ; :
 nnoremap <leader><leader> <c-^>
 nmap <Space> :noh<cr>
@@ -87,16 +87,16 @@ let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '>>'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-      \ 'javascript': ['prettier'],
-      \ 'jsx': ['prettier'],
+      \ 'javascript': ['eslint'],
       \ 'ruby': ['rubocop']
       \ }
 let g:ale_history_enabled = 0
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
-let g:airline#extensions#ale#enabled = 1
 let g:ale_open_list = 1
 "" let g:ale_linters_explicit = 1
 let g:ale_linters_ignore = ['brakeman']
 
 let g:jsx_ext_required = 0
+
+set rtp+=/usr/local/opt/fzf
