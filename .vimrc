@@ -16,10 +16,8 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'thoughtbot/vim-rspec'
 " Plugin 'tpope/vim-dispatch'
 Bundle 'jgdavey/tslime.vim'
-Plugin 'mxw/vim-jsx'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'isruslan/vim-es6'
+Plugin 'pangloss/vim-javascript'
+Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'elzr/vim-json'
 Plugin 'dense-analysis/ale'
 Plugin 'tpope/vim-fugitive'
@@ -88,7 +86,9 @@ let g:ale_history_enabled = 0
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_open_list = 0
-let g:ale_fixers = ['rubocop']
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'ruby': ['rubocop']}
+let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
 
 "" NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -98,3 +98,9 @@ let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
 
 set rtp+=/usr/local/opt/fzf
+let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git -o -name .expo \) -prune -o -print'
+
+augroup FiletypeGroup
+  autocmd!
+  au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
