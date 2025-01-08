@@ -311,51 +311,75 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
   -- Key mappings for navigating and confirming completions
-  mapping = {
+  -- mapping = {
 
-    -- ... Your other mappings ...
-    ['<CR>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        if luasnip.expandable() then
-          luasnip.expand()
-        else
-          cmp.confirm({
-            select = true,
-          })
-        end
-      else
-        fallback()
-      end
-    end),
+  --   -- ... Your other mappings ...
+  --   ['<CR>'] = cmp.mapping(function(fallback)
+  --     -- if cmp.visible() then
+  --     --   if luasnip.expandable() then
+  --     --     luasnip.expand()
+  --     --   else
+  --     --     cmp.confirm({
+  --       --       select = true,
+  --       --     })
+  --       --   end
+  --       -- else
+  --       --   fallback()
+  --       -- end
+  --       if cmp.visible() then
+  --         if luasnip.expandable() then
+  --           luasnip.expand() -- Expand the snippet
+  --         else
+  --           -- Confirm selection if something is selected, otherwise fallback
+  --           if cmp.get_selected_entry() then
+  --             cmp.confirm({ select = true })
+  --           else
+  --             fallback()
+  --           end
+  --         end
+  --       elseif luasnip.expandable() then
+  --         luasnip.expand() -- Expand snippet if possible
+  --       else
+  --         fallback() -- Default fallback (e.g., insert newline)
+  --       end
+  --     end),
 
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.locally_jumpable(1) then
-        luasnip.jump(1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+  --   ["<Tab>"] = cmp.mapping(function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_next_item()
+  --     elseif luasnip.locally_jumpable(1) then
+  --       luasnip.jump(1)
+  --     else
+  --       fallback()
+  --     end
+  --   end, { "i", "s" }),
 
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.locally_jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+  --   ["<S-Tab>"] = cmp.mapping(function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_prev_item()
+  --     elseif luasnip.locally_jumpable(-1) then
+  --       luasnip.jump(-1)
+  --     else
+  --       fallback()
+  --     end
+  --   end, { "i", "s" }),
 
-    -- ... Your other mappings ...
-  },
+  --   -- ... Your other mappings ...
+  -- },
   -- Completion sources
   sources = {
-    { name = 'nvim_lsp' },   -- LSP source
-    { name = 'buffer' },     -- Buffer completion
-    { name = 'path' },       -- Path completion
     { name = 'luasnip' },    -- Snippet completion
+    { name = 'nvim_lsp' },   -- LSP source
+    { name = 'path' },       -- Path completion
+    { name = 'buffer' },     -- Buffer completion
   },
 })
